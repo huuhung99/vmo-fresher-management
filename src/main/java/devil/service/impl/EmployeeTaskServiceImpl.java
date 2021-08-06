@@ -51,7 +51,7 @@ public class EmployeeTaskServiceImpl implements EmployeeTaskService {
             }
             employeeTask.setTask(opTask.get());
         }
-
+        employeeTask.setCreateAt(Instant.now());
         // id null create
         if(request.getId()==null){
             return genericMapper.mapToType(employeeTaskRepository.save(employeeTask),EmployeeTaskDto.class);
