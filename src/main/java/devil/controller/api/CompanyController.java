@@ -5,6 +5,7 @@ import devil.controller.request.CompanyRequest;
 import devil.controller.response.ResponseBodyDto;
 import devil.model.Company;
 import devil.service.CompanyService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/company")
+@Api(tags = "Company")
 public class CompanyController {
     @Autowired
     private CompanyService companyService;

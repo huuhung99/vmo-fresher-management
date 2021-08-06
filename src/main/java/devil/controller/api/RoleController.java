@@ -5,6 +5,7 @@ import devil.controller.request.RoleRequest;
 import devil.controller.response.ResponseBodyDto;
 import devil.dto.RoleDto;
 import devil.service.RoleService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/role")
+@Api(tags = "Role")
 public class RoleController {
     @Autowired
     private RoleService roleService;
