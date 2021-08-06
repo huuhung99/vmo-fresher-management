@@ -40,7 +40,7 @@ public class TokenService {
     }
 
     public String verifyToken(String token) {
-        if(token==null ||token.trim().isEmpty())
+        if(token==null ||token.isBlank())
             return null;
         try {
             Claims claimBody = Jwts.parser()
@@ -57,7 +57,7 @@ public class TokenService {
     }
 
     public String getRoleFromToken(String token){
-        if(token==null ||token.trim().isEmpty())
+        if(token==null ||token.isBlank())
             return null;
         try {
             Claims claimBody = Jwts.parser()

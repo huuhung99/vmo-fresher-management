@@ -6,6 +6,7 @@ import devil.controller.response.ResponseBodyDto;
 import devil.dto.AverageScoreDto;
 import devil.dto.EmployeeTaskDto;
 import devil.service.EmployeeTaskService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee-task")
+@Api(tags = "Employee-Task")
 public class EmployeeTaskController {
     @Autowired
     private EmployeeTaskService employeeTaskService;

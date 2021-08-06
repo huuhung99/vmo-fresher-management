@@ -29,8 +29,9 @@ public class TokenFilter implements Filter {
         String uri = rq.getRequestURI();
         String method = rq.getMethod();
 
-        if (uri.contains("/employee/sign-in")||uri.contains("/employee/sign-up")) {
-            //neu no la url cua employee/sign-in, employee/sign-up thi cho qua
+        if (uri.contains("/employee/sign-in")||uri.contains("/employee/sign-up")
+        ||uri.contains("swagger")||uri.contains("/v2/api-docs")) {
+            //neu no la url cua employee/sign-in, employee/sign-up, swagger thi cho qua
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }

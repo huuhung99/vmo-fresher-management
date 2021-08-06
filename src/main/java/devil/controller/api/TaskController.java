@@ -4,6 +4,7 @@ import devil.common.enums.ResponseCodeEnum;
 import devil.controller.response.ResponseBodyDto;
 import devil.model.Task;
 import devil.service.TaskService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/task")
+@Api(tags = "Task")
 public class TaskController {
     @Autowired
     private TaskService taskService;
