@@ -6,6 +6,7 @@ import devil.controller.request.EmployeeUpdateRequest;
 import devil.controller.response.ResponseBodyDto;
 import devil.dto.EmployeeDto;
 import devil.dto.EmployeeInfoDto;
+import devil.dto.SignInDto;
 import devil.service.EmployeeService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,9 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     @PostMapping("/sign-in")
-    public ResponseEntity<ResponseBodyDto<String>> signIn(@RequestBody EmployeeCreateRequest request){
-        String s = employeeService.signIn(request);
-        ResponseBodyDto response= new ResponseBodyDto(s,ResponseCodeEnum.R_200,"OK");
+    public ResponseEntity<ResponseBodyDto<SignInDto>> signIn(@RequestBody EmployeeCreateRequest request){
+        SignInDto signInDto = employeeService.signIn(request);
+        ResponseBodyDto response= new ResponseBodyDto(signInDto,ResponseCodeEnum.R_200,"OK");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     @PostMapping("/sign-up")
