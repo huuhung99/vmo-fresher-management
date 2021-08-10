@@ -5,6 +5,7 @@ import devil.controller.request.EmployeeCreateRequest;
 import devil.controller.request.EmployeeUpdateRequest;
 import devil.dto.EmployeeDto;
 import devil.dto.EmployeeInfoDto;
+import devil.dto.SignInDto;
 import devil.dto.enums.RoleEnum;
 import devil.dto.mapper.GenericMapper;
 import devil.model.Employee;
@@ -50,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public String signIn(EmployeeCreateRequest request) {
+    public SignInDto signIn(EmployeeCreateRequest request) {
         Employee employee = employeeRepository.findEmployeeByUserName(request.getUserName());
         if(employee==null){
             throw new BadRequestException("User name does not exit!");
@@ -59,7 +60,10 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new BadRequestException("Wrong password!");
         }
         EmployeeInfo employeeInfo = employeeInfoRepository.findEmployeeInfoByEmployeeId(employee.getId());
-        return tokenService.genToken(employee.getUserName(), employeeInfo.getRole());
+        SignInDto signInDto=new SignInDto();
+        signInDto.setToken(tokenService.genToken(employee.getUserName(), employeeInfo.getRole()));
+        signInDto.setEmployeeDto(genericMapper.mapToType(employeeInfo.getEmployee(),EmployeeDto.class));
+        return signInDto;
     }
 
     @Override
